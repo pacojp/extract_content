@@ -1,0 +1,1 @@
+Nakatani Shuyo氏のextract_contentを俺々カスタマイズしたものを一時保管しておく場所です
