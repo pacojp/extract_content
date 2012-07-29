@@ -71,6 +71,16 @@ module ExtractContent
     end
 
     #
+    # for サッカーキング
+    #
+    if html =~ /<!\-\- コラム \-\->(.*)<!\-\- \/コラム \-\->/mi
+      html = $1
+      html.gsub!(/<blockquote>.*<\/blockquote>/mi,'')
+      html.gsub!(/<ul.*?>.*?<\/ul>/mi,'')
+      html.gsub!(/<div id="cm_txt">.*?<div>.*?<div/mi,'<div><div><div')
+    end
+
+    #
     # for wikipedia
     #
     # div & table タグはがん無視でOK
@@ -238,6 +248,9 @@ module ExtractContent
     #html.gsub!(/<div\s[^>]*(id|class)\s*=\s*['"]?\S*more\S*["']?[^>]*>/is, '')
     html.gsub!(/<div\s[^>]*(id|class)\s*=\s*['"]?\S*more\S*["']?[^>]*>/i, '')
 
+    # ただの段落としてdivを使っているコンテンツ対策
+    html.gsub!(/<div>/,'')
+    html.gsub!(/<\/div>/,'')
     html
   end
 
