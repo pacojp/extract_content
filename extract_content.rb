@@ -79,6 +79,7 @@ module ExtractContent
       html.gsub!(/<ul.*?>.*?<\/ul>/mi,'')
       html.gsub!(/<div id="cm_txt">.*?<div>.*?<div/mi,'<div><div><div')
     end
+    html.gsub!(/<p>【関連記事】.*?<\/div>/mi,'</div>')
 
     #
     # for wikipedia
